@@ -675,3 +675,18 @@ body {
   .edu-degree { font-size: 10.5pt; }
   .edu-inst { font-size: 9.5pt; }
 }
+
+/* institution website links in Education */
+.edu-link {
+  color: color-mix(in srgb, var(--accent) 85%, var(--ink));
+  text-decoration: underline dotted color-mix(in srgb, var(--accent) 60%, transparent);
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.edu-link:hover { text-decoration: underline solid var(--accent); color: var(--accent); }
+.edu-link .ext { font-size: 0.85em; }
+
+@media print {
+  .edu-link { color: var(--muted); text-decoration: none; }
+  .edu-link .ext, .info a span[aria-hidden] { display: none; }
+}

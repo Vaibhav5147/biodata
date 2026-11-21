@@ -18,18 +18,21 @@
     {
       "degree": "Bachelor of Technology in Electronics and Communication Engineering",
       "institution": "Motilal Nehru National Institute of Technology, Allahabad",
+      "url": "https://www.mnnit.ac.in/",
       "year": "2021",
       "score": "78.4%"
     },
     {
       "degree": "12th Standard (Science Stream)",
       "institution": "Jawahar Navodaya Vidyalaya, Kanhiwada, Madhya Pradesh",
+      "url": "https://navodaya.gov.in/nvs-school/mp/seoni",
       "year": "2016",
       "score": "86.6%"
     },
     {
       "degree": "10th Standard",
       "institution": "Jawahar Navodaya Vidyalaya, Kanhiwada, Madhya Pradesh",
+      "url": "https://navodaya.gov.in/nvs-school/mp/seoni",
       "year": "2014",
       "score": "91.2%"
     }
@@ -37,7 +40,8 @@
   "career": {
     "profession": "Software Engineer",
     "company": "Samsung Research and Development Institute India",
-    "location": "Delhi, India"
+    "location": "Delhi, India",
+    "linkedin": "https://www.linkedin.com/in/vaibhav-raut/"
   },
   "family": {
     "father": "Late Mr. Murlidhar Raut (Occupation: Engineer)",

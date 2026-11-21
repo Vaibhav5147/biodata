@@ -29,7 +29,15 @@ export default function Education({ items, scoreLabel }) {
           <div className="edu-body">
             <strong className="edu-degree">{e.degree}</strong>
             <span className="edu-inst">
-              <span aria-hidden="true">🏛️</span> {e.institution}
+              <span aria-hidden="true">🏛️</span>{' '}
+              {e.url ? (
+                <a className="edu-link" href={e.url} target="_blank" rel="noopener noreferrer">
+                  {e.institution}
+                  <span className="ext" aria-hidden="true"> ↗</span>
+                </a>
+              ) : (
+                e.institution
+              )}
             </span>
           </div>
           {e.score && (
