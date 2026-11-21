@@ -47,3 +47,22 @@
   .footer { min-height: 0; }
 }
 
+
+/* Animations: print the final, still state */
+@media print {
+  .hero-flowers, .floral-side, .title, .divider span, .divider::before, .divider::after,
+  .card .edu-item, .card .card-icon, .photo-frame::after { animation: none !important; }
+  .photo-frame::after { display: none; }
+  /* solid colour for the name in print (gradient text can leave a stray line in PDFs) */
+  .title { background: none !important; color: var(--navy) !important; -webkit-text-fill-color: var(--navy); }
+  .card .edu-item { opacity: 1 !important; }
+  .edu-ring, .card:not(.in-view) .edu-ring { --pct: var(--final) !important; transition: none; }
+  .count-anim { display: none; }
+  .count-final { display: inline; }
+}
+
+/* Lotus corners in the PDF: use the plain image (prints reliably), no animation */
+@media print {
+  .lotus-art, .lotus-sparkles { display: none !important; }
+  .lotus-print { display: block !important; width: 100%; height: 100%; }
+}

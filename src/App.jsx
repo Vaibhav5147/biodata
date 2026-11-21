@@ -11,12 +11,10 @@ import Gallery from './components/Gallery.jsx'
 import Contact from './components/Contact.jsx'
 import BackToTop from './components/BackToTop.jsx'
 import Education from './components/Education.jsx'
+import Lotus from './components/Lotus.jsx'
 
 const DATA = { en, mr, hi }
 
-// Lotus corner artwork (public/lotus-left.svg, public/lotus-right.svg).
-// Loaded as images so they also print correctly in the PDF.
-const lotus = (side) => `${import.meta.env.BASE_URL}lotus-${side}.svg`
 const CODES = LANGUAGES.map((l) => l.code)
 
 // Order of sections, their icon and colour (colours are defined in theme.css)
@@ -138,8 +136,8 @@ export default function App() {
   return (
     <div className={`page lang-${lang}`}>
       {/* lotus decorations fixed to the bottom corners on wide screens */}
-      <img className="floral-side floral-left" src={lotus('left')} alt="" />
-      <img className="floral-side floral-right" src={lotus('right')} alt="" />
+      <Lotus side="left" className="floral-side floral-left" />
+      <Lotus side="right" className="floral-side floral-right" />
 
       <TopBar t={t} lang={lang} onLangChange={setLang} sections={SECTIONS} active={active} onJump={jumpTo} />
       <Header data={data} t={t} />
@@ -163,7 +161,7 @@ export default function App() {
           </Section>
 
           <Section {...section('education')}>
-            <Education items={data.education} scoreLabel={t.score} />
+            <Education items={data.education} scoreLabel={t.score} animate={seen.has('education')} />
           </Section>
 
           <Section {...section('career')}>
@@ -192,8 +190,8 @@ export default function App() {
 
       <footer className="footer">
         {/* smaller lotus corners at the page bottom on phones */}
-        <img className="floral-footer floral-footer-left no-print" src={lotus('left')} alt="" />
-        <img className="floral-footer floral-footer-right no-print" src={lotus('right')} alt="" />
+        <Lotus side="left" className="floral-footer floral-footer-left no-print" />
+        <Lotus side="right" className="floral-footer floral-footer-right no-print" />
         <div className="footer-ornament" aria-hidden="true"><span>❖</span></div>
       </footer>
 

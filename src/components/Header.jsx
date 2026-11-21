@@ -1,4 +1,5 @@
 import Highlights from './Highlights.jsx'
+import Petals from './Petals.jsx'
 
 const art = (name) => `${import.meta.env.BASE_URL}${name}`
 
@@ -8,6 +9,8 @@ export default function Header({ data, t }) {
       {/* watercolour flower corners (public/hero-flowers-*.svg) */}
       <img className="hero-flowers hero-flowers-left" src={art('hero-flowers-left.svg')} alt="" />
       <img className="hero-flowers hero-flowers-right" src={art('hero-flowers-right.svg')} alt="" />
+
+      <Petals />
 
       <div className="hero-inner">
         <h1 className="title">{data.name}</h1>

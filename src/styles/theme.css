@@ -690,3 +690,166 @@ body {
   .edu-link { color: var(--muted); text-decoration: none; }
   .edu-link .ext, .info a span[aria-hidden] { display: none; }
 }
+
+/* =====================================================================
+   Animations — subtle & elegant. All disabled for reduced motion / print.
+   ===================================================================== */
+
+/* ---- falling petals in the banner ---- */
+.petals { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.petal-wrap {
+  position: absolute;
+  top: -30px;
+  left: var(--x);
+  width: var(--size);
+  opacity: 0;
+  animation: petal-fall var(--dur) linear infinite;
+  animation-delay: calc(var(--delay) * -1); /* start mid-fall, no empty wait */
+}
+.petal { display: block; width: 100%; height: auto; }
+.petal path { fill: #a9c9ec; }
+.petal-pink path { fill: #f4b6cf; }
+.petal .vein { fill: none; stroke: #fff; stroke-opacity: 0.6; stroke-width: 1; }
+@keyframes petal-fall {
+  0%   { transform: translate(0, -10px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.8; }
+  50%  { transform: translate(var(--drift), 150px) rotate(calc(var(--spin) / 2)); }
+  88%  { opacity: 0.7; }
+  100% { transform: translate(calc(var(--drift) * -0.4), 330px) rotate(var(--spin)); opacity: 0; }
+}
+@media (max-width: 760px) {
+  .petal-wrap:nth-child(even) { display: none; }
+}
+
+/* ---- gently swaying flowers ---- */
+.hero-flowers-left  { transform-origin: 0% 100%; animation: sway 7s ease-in-out infinite alternate; }
+.hero-flowers-right { transform-origin: 100% 100%; animation: sway 7s ease-in-out -3.5s infinite alternate-reverse; }
+.floral-left, .floral-footer-left   { transform-origin: 0% 100%; animation: sway-soft 9s ease-in-out infinite alternate; }
+.floral-right, .floral-footer-right { transform-origin: 100% 100%; animation: sway-soft 9s ease-in-out -4.5s infinite alternate-reverse; }
+@keyframes sway      { from { rotate: -1.2deg; } to { rotate: 1.2deg; } }
+@keyframes sway-soft { from { rotate: -0.8deg; } to { rotate: 0.8deg; } }
+
+/* ---- banner entrance + name shimmer ---- */
+.title {
+  background: linear-gradient(110deg, var(--navy) 0%, var(--navy-2) 40%, #8cb8ea 50%, var(--navy-2) 60%, var(--navy) 100%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: hero-rise 0.8s ease both, name-shimmer 2.2s ease-in-out 1.2s both;
+}
+@keyframes hero-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes name-shimmer { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+
+.divider::before { transform-origin: 100% 50%; animation: line-grow 0.9s ease 0.3s both; }
+.divider::after  { transform-origin: 0% 50%;   animation: line-grow 0.9s ease 0.3s both; }
+.divider span    { animation: hero-rise 0.6s ease 0.2s both; }
+@keyframes line-grow { from { transform: scaleX(0); } }
+
+/* ---- education: rows rise in, rings fill, numbers count up ---- */
+@property --pct { syntax: '<number>'; inherits: false; initial-value: 0; }
+.edu-ring { transition: --pct 1.4s ease-out 0.3s; }
+.card:not(.in-view) .edu-ring { --pct: 0 !important; }
+.count-final { display: none; }
+
+.card:not(.in-view) .edu-item { opacity: 0; }
+.card.in-view .edu-item { animation: edu-rise 0.55s ease both; animation-delay: calc(0.15s + var(--i) * 0.12s); }
+@keyframes edu-rise { from { opacity: 0; transform: translateY(12px); } }
+
+/* ---- section icons pop in ---- */
+.card.in-view .card-icon { animation: icon-pop 0.6s ease 0.1s both; }
+@keyframes icon-pop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* ---- slow gold sheen across the photo frame ---- */
+.photo-frame { position: relative; overflow: hidden; }
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 42%, rgba(255, 246, 214, 0.55) 50%, transparent 58%);
+  background-size: 300% 100%;
+  background-position: 120% 0;
+  mix-blend-mode: soft-light;
+  animation: sheen 6s ease-in-out 1.5s infinite;
+}
+@keyframes sheen {
+  0%   { background-position: 120% 0; }
+  35%  { background-position: -20% 0; }
+  100% { background-position: -20% 0; }
+}
+
+/* ---- back-to-top breathes softly ---- */
+.back-to-top.show { animation: breathe 3s ease-in-out infinite; }
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 6px 18px rgba(92, 16, 32, 0.16); }
+  50%      { box-shadow: 0 6px 26px rgba(212, 169, 55, 0.45); }
+}
+
+/* ---- reduced motion: everything still, final values shown ---- */
+@media (prefers-reduced-motion: reduce) {
+  .petals { display: none; }
+  .hero-flowers, .floral-side, .floral-footer, .title, .divider span,
+  .divider::before, .divider::after, .card .edu-item, .card .card-icon,
+  .photo-frame::after, .back-to-top.show { animation: none !important; }
+  .title { background-position: 0 0; }
+  .card:not(.in-view) .edu-item { opacity: 1; }
+  .edu-ring { transition: none; }
+  .card:not(.in-view) .edu-ring { --pct: var(--final) !important; }
+}
+
+/* ============ Lotus corners: blooming flowers + floating sparkles ============ */
+.lotus { overflow: visible; }
+.floral-footer { position: absolute; }            /* keep the footer corners positioned */
+.lotus-art, .lotus-art svg { display: block; width: 100%; height: 100%; }
+.lotus-print { display: none; }                   /* image copy is for the PDF only */
+
+/* each flower starts as a bud and fans open from its base, bottom flower first */
+.lotus .bloom {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: lotus-bloom 1.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(0.4s + var(--d) * 0.35s);
+}
+@keyframes lotus-bloom {
+  0%   { transform: scale(0.25, 0.55); opacity: 0.6; }
+  70%  { transform: scale(1.06, 1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* sparkles rising around the flowers */
+.lotus-sparkles { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.sparkle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(var(--size) * 1.7);
+  height: calc(var(--size) * 1.7);
+  opacity: 0;
+  animation: sparkle-rise var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+.sparkle-dot {
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #f6b3cc 45%, rgba(246, 179, 204, 0) 75%);
+}
+.sparkle-glint svg { display: block; width: 100%; height: 100%; }
+.sparkle-glint path { fill: #e6c35c; filter: drop-shadow(0 0 2px rgba(230, 195, 92, 0.8)); }
+@keyframes sparkle-rise {
+  0%   { transform: translate(0, 0) scale(0.6) rotate(0deg); opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { transform: translate(8px, -60px) scale(1) rotate(45deg); }
+  80%  { opacity: 0.7; }
+  100% { transform: translate(-6px, -120px) scale(0.8) rotate(90deg); opacity: 0; }
+}
+.floral-footer .sparkle:nth-child(even) { display: none; }  /* fewer on phones */
+
+@media (prefers-reduced-motion: reduce) {
+  .lotus .bloom { animation: none; }
+  .lotus-sparkles { display: none; }
+}
