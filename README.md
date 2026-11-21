@@ -1,4 +1,4 @@
-# Marriage Biodata Website
+# Biodata Website
 
 React + Vite site in English / मराठी / हिंदी, hosted on GitHub Pages.
 
