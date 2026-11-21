@@ -155,8 +155,6 @@ export default function App() {
               />
             </div>
           )}
-          <h2 className="profile-name">{data.name}</h2>
-          <p className="profile-sub">{data.career.profession}</p>
         </aside>
 
         <div className="details">

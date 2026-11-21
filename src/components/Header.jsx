@@ -10,8 +10,6 @@ export default function Header({ data, t }) {
       <img className="hero-flowers hero-flowers-right" src={art('hero-flowers-right.svg')} alt="" />
 
       <div className="hero-inner">
-        <div className="motif" aria-hidden="true">ॐ</div>
-        <p className="tagline">{data.tagline}</p>
         <h1 className="title">{data.name}</h1>
         <div className="divider" aria-hidden="true"><span>✦</span></div>
         <Highlights data={data} t={t} />
