@@ -1,0 +1,49 @@
+@media print {
+  @page { size: A4; margin: 10mm; }
+
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body { background: #fff; font-size: 11pt; }
+  .no-print, .lightbox { display: none !important; }
+
+  /* show every card, no animation state */
+  .card, .card.in-view { opacity: 1 !important; transform: none !important; transition: none; box-shadow: none; }
+
+  .hero { padding: 6mm 6mm 10mm; }
+  .hero-inner { padding: 3mm 4mm 2mm; }
+  .motif { width: 40px; height: 40px; font-size: 22px; box-shadow: none; }
+  .title { font-size: 26pt; }
+  .highlights { margin-top: 3mm; }
+  .highlights li { animation: none; padding: 1mm 3mm; font-size: 10pt; }
+  .hero-wave { height: 16px; }
+
+  .layout { max-width: none; padding: 0; grid-template-columns: 52mm 1fr; gap: 6mm; margin-top: 4mm; }
+  .profile { position: relative; top: auto; margin-top: 0; box-shadow: none; border: 1px solid var(--gold-soft); padding: 3mm; }
+  .profile-name { font-size: 15pt; }
+
+  .details { gap: 3.5mm; }
+  .card { padding: 3mm 4mm 3mm 5mm; break-inside: avoid; page-break-inside: avoid; }
+  .card-title { font-size: 14pt; margin-bottom: 2mm; }
+  .card-icon { width: 26px; height: 26px; font-size: 13px; }
+  .info-row { grid-template-columns: 38% 1fr; padding: 1mm 2mm; }
+  .info dt { font-size: 10pt; }
+  .info a { color: var(--ink); }
+
+  .footer { margin-top: 4mm; padding-bottom: 0; }
+}
+
+/* Lotus corners in the PDF: fixed elements repeat at the bottom of every printed page */
+@media print {
+  .floral-side {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    height: 85mm;
+    width: auto;
+    opacity: 0.9;
+    z-index: 0;
+  }
+  .floral-footer { display: none !important; }
+  .footer { min-height: 0; }
+}
+

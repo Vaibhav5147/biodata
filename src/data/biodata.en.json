@@ -1,0 +1,57 @@
+{
+  "name": "Vaibhav Kumar Raut",
+  "tagline": "|| Shree Ganeshay Namah ||",
+  "birthDateISO": "1997-12-05",
+  "photos": [
+    "profile.jpg"
+  ],
+  "personal": {
+    "dob": "5 December 1997",
+    "birthPlace": "Ugli, District Seoni, Madhya Pradesh, India",
+    "height": "5' 7\"",
+    "complexion": "Wheatish",
+    "bloodGroup": "B+",
+    "religion": "Hindu",
+    "caste": "—",
+    "motherTongue": "Hindi"
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Technology in Electronics and Communication Engineering",
+      "institution": "Motilal Nehru National Institute of Technology, Allahabad",
+      "year": "2021",
+      "score": "78.4%"
+    },
+    {
+      "degree": "12th Standard (Science Stream)",
+      "institution": "Jawahar Navodaya Vidyalaya, Kanhiwada, Madhya Pradesh",
+      "year": "2016",
+      "score": "86.6%"
+    },
+    {
+      "degree": "10th Standard",
+      "institution": "Jawahar Navodaya Vidyalaya, Kanhiwada, Madhya Pradesh",
+      "year": "2014",
+      "score": "91.2%"
+    }
+  ],
+  "career": {
+    "profession": "Software Engineer",
+    "company": "Samsung Research and Development Institute India",
+    "location": "Delhi, India"
+  },
+  "family": {
+    "father": "Late Mr. Murlidhar Raut (Occupation: Engineer)",
+    "mother": "Mrs. Keerti Raut (Homemaker)",
+    "siblings": "1 Brother (Unmarried)",
+    "nativePlace": "Ugli , Seoni, Madhya Pradesh, India",
+    "familyType": "Joint Family"
+  },
+  "expectations": "Looking for an educated, understanding and family-oriented partner who values both tradition and modern outlook.",
+  "contact": {
+    "contactPerson": "Mrs. Keerti Raut (Mother)",
+    "phone": "+91 88394 31480",
+    "email": "vaibhavkumarraut5147@gmail.com",
+    "address": "Village Ugli,Sub Dist. Keolari, Dist. Seoni, Madhya Pradesh"
+  }
+}

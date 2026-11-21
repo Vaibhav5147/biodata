@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# original full-size photo (site uses the smaller profile.jpg)
+public/photos/profile.png
